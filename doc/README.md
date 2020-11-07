@@ -21,10 +21,18 @@ usermod -a -G cdrom,audio,video,plugdev,users,dialout,dip,input,gpio mumble
 
 ## Install
 
-As root on your Raspberry Pi (`sudo -i`), install golang and other required dependencies, then build talkiepi:
+As root on your Raspberry Pi (`sudo -i`), install golang and other required dependencies:
 ```
 apt-get install golang libopenal-dev libopus-dev git
 
+```
+If building on a pi zero:
+```
+wget http://raspbian.raspberrypi.org/raspbian/pool/main/s/sndio/libsndio6.1_1.1.0-3_armhf.deb
+dpkg -i libsndio6.1_1.1.0-3_armhf.deb
+```
+Then build talkiepi
+```
 su mumble
 
 mkdir ~/gocode
@@ -36,7 +44,7 @@ export GOBIN=/home/mumble/bin
 cd $GOPATH
 
 go get github.com/dchote/gopus
-go get github.com/dchote/talkiepi
+go get github.com/97chaz/talkiepi
 
 cd $GOPATH/src/github.com/dchote/talkiepi
 
@@ -48,7 +56,7 @@ go build -o /home/mumble/bin/talkiepi cmd/talkiepi/main.go
 
 As root on your Raspberry Pi (`sudo -i`), copy mumble.service in to place:
 ```
-cp /home/mumble/gocode/src/github.com/dchote/talkiepi/conf/systemd/mumble.service /etc/systemd/system/mumble.service
+cp /home/mumble/gocode/src/github.com/97chaz/talkiepi/conf/systemd/mumble.service /etc/systemd/system/mumble.service
 
 systemctl enable mumble.service
 ```
