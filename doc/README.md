@@ -45,7 +45,22 @@ cd $GOPATH
 
 go get github.com/dchote/gopus
 go get github.com/97chaz/talkiepi
+```
+If building on a pi zero
 
+```
+sudo -i
+cd /home/mumble/bin/talkiepi/workarounds
+dpkg -i *.deb
+
+su mumble
+
+export GOPATH=/home/mumble/gocode
+export GOBIN=/home/mumble/bin
+
+```
+Then complete build
+```
 cd $GOPATH/src/github.com/dchote/talkiepi
 
 go build -o /home/mumble/bin/talkiepi cmd/talkiepi/main.go 
