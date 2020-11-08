@@ -61,7 +61,7 @@ export GOBIN=/home/mumble/bin
 ```
 Then complete build
 ```
-cd $GOPATH/src/github.com/dchote/talkiepi
+cd $GOPATH/src/github.com/97chaz/talkiepi
 
 go build -o /home/mumble/bin/talkiepi cmd/talkiepi/main.go 
 ```
